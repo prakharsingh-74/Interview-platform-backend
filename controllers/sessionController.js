@@ -7,7 +7,7 @@ const Question = require("../models/Question");
 exports.createSession = async (req, res) => {
     try {
         const { role, experience, topicsToFocus, description, questions } = req.body;
-        const userId = req.user._id //middleware setting req.user
+        const userId = req.user._id; //middleware setting req.user
         const session = await Session.create({
             user: userId,
             role,
