@@ -20,18 +20,6 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions));
-
-app.use((req, res, next) => {
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Origin", corsOptions.origin);
-    res.header("Access-Control-Allow-Methods", corsOptions.methods.join(","));
-    res.header("Access-Control-Allow-Headers", corsOptions.allowedHeaders.join(","));
-    return res.sendStatus(204);
-  }
-  next();
-});
-
 connectDB()
 
 //middleware
