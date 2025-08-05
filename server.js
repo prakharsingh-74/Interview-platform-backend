@@ -13,12 +13,24 @@ const { generateInterviewQuestions, generateConceptExplanation } = require("./co
 const app = express();
 
 //middleware to handle cors
-app.use(cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    
-}));
+const corsOptions = {
+  origin: "https://ai-powered-interview-platform-liard.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Origin", corsOptions.origin);
+    res.header("Access-Control-Allow-Methods", corsOptions.methods.join(","));
+    res.header("Access-Control-Allow-Headers", corsOptions.allowedHeaders.join(","));
+    return res.sendStatus(204);
+  }
+  next();
+});
 
 connectDB()
 
