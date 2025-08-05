@@ -1,6 +1,6 @@
 const express = require("express");
 const { togglePinQuestion, updateQuestionNote, addQuestionsToSession } = require("../controllers/questionController");
-const { protect } = require("../middlewares/authMiddleware");
+const { protect } = require("../middlewares/authmiddleware");
 
 const router = express.Router();
 
