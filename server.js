@@ -15,9 +15,6 @@ const app = express();
 //middleware to handle cors
 const corsOptions = {
   origin: "https://ai-powered-interview-platform-liard.vercel.app/",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
 };
 
 connectDB()
